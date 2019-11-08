@@ -1,0 +1,94 @@
+@font-face {
+  font-family: "Orbitron";
+  src: url("fonts/Orbitron/Orbitron-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Orbitron";
+  font-weight: bold;
+  src: url("fonts/Orbitron/Orbitron-Bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Raleway";
+  src: url("fonts/Raleway/Raleway-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Raleway";
+  font-weight: bold;
+  src: url("fonts/Raleway/Raleway-Bold.ttf") format("truetype");
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Raleway';
+  font-size: small;
+  white-space: pre-wrap;
+}
+
+p {
+  margin-bottom: 0;
+}
+
+.col-sm-4 {
+  padding-right: 5px;
+  padding-left: 5px;
+}
+
+.card {
+  border: none;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  /* background-image: linear-gradient(rgba(255, 102, 0, 0.6) 0%, rgba(156, 92, 49, 0.2) 49px, rgba(255, 102, 0, 0) 100%); */
+}
+
+.card-header {
+  /* background-color: transparent; */
+  border: none;
+  background-color: rgba(255, 102, 0, 0.6);
+  color: white;
+  font-weight: bold;
+  font-size: medium;
+  font-family: 'Orbitron';
+  padding-bottom: 15px;
+  padding-top: 10px;
+}
+
+.card-body {
+  padding: 0 15px 15px 15px;
+  border: 1px solid rgba(255, 102, 0, 0.6);
+  /* background-color: transparent; */
+}
+
+.title {
+  color: rgba(255, 102, 0);
+  font-size: large;
+}
+
+.logo {
+  position: absolute;
+  top: 5px;
+  right: 9px;
+  width: 100px;
+  z-index: 2;
+}
+
+.footer {
+  position: absolute;
+  right: 5px;
+  bottom: 8px;
+  font-size: xx-small;
+}
+
+.matrix-corner {
+  position: absolute;
+  right: -10px;
+  bottom: -6px;
+  font-size: 45px;
+  font-weight: bold;
+  font-family: 'Orbitron';
+  color: rgba(255, 102, 0, 0.2);
+  line-height: 40px;
+}
