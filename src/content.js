@@ -142,6 +142,18 @@ export const content = {
             {
                 name: 'get_max_item_id',
                 desc: 'Hacker News item largest id'
+            },
+            {
+                name: 'get_max_item_id',
+                desc: 'Hacker News item largest id'
+            },
+            {
+                name: 'get_max_item_id',
+                desc: 'Hacker News item largest id'
+            },
+            {
+                name: 'get_max_item_id',
+                desc: 'Hacker News item largest id'
             }
         ]
     }
