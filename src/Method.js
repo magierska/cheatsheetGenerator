@@ -13,7 +13,7 @@ export default function Method({ method }) {
                 {method.params && method.params.map(p => p.name).join(', ')}
                 <b>)</b>
             </p>            
-            <p>{method.desc}</p>
+            <p>{method.description}</p>
             {method.params && method.params.map(p => 
                 <Parameter 
                     parameter={p}

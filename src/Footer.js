@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 
-export default function Footer() {
-    return (
-        <div>
-            <p class="footer">Install the development version from GitHub with <b>devtools::install_github("szymanskir/hackeRnews")</b></p>
-        </div>
-    );
+class Footer extends Component {
+    render() {
+        return (
+            <div>
+                <p class="footer">{this.props.footer}</p>
+            </div>
+        );
+    }
 }
+
+export default Footer;
