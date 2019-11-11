@@ -1,10 +1,6 @@
 import React from 'react';
 import Parameter from './Parameter';
 
-function generateParameter(param) {
-    return `${param.name}${param.value ? ` = ${param.value}` : ''}`
-}
-
 export default function Method({ method }) {
     return (
         <div>
@@ -13,9 +9,10 @@ export default function Method({ method }) {
                 {method.params && method.params.map(p => p.name).join(', ')}
                 <b>)</b>
             </p>            
-            <p>{method.desc}</p>
-            {method.params && method.params.map(p => 
+            <p>{method.description}</p>
+            {method.params && method.params.map((p, i) => 
                 <Parameter 
+                    key={i}
                     parameter={p}
                 />
             )}

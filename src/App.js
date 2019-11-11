@@ -3,14 +3,19 @@ import Cheatsheet from './Cheatsheet';
 import TextAreaEditor from './TextAreaEditor';
 import Yaml from "yaml";
 import css from "css";
+import Form from 'react-bootstrap/Form';
 
 class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
             ymlConfig: null,
-            cssConfig: null
+            cssConfig: null,
+            logo: null
         };
+      
+        this.loadLogo = this.loadLogo.bind(this);
+        this.setLogoFilePath = this.setLogoFilePath.bind(this);
     }
 
     updateYmlConfig = (text) => {
@@ -23,18 +28,47 @@ class App extends Component {
 
     updateCssConfig = (text) => {
         const parsedCss = css.parse(text);
+
+    loadLogo(e) {
+        let file = e.target.files[0];
+        if (!file) {
+            return;
+        }
+        var reader = new FileReader();
+        reader.onload = this.setLogoFilePath;
+        reader.readAsDataURL(file);
+    }
+
+    setLogoFilePath(e) {
+        this.setState({
+            logo: e.target.result
+        });
     }
 
     render() {
         return (
             <div>
                 <div className="pdf-container">
-                    <Cheatsheet />
-                    <Cheatsheet />
+                    {this.state.ymlConfig.pages && this.state.ymlConfig.pages.map((page, i) => (
+                        <Cheatsheet
+                            key={i}
+                            page={page}
+                            name={this.state.ymlConfig.name}
+                            description={this.state.ymlConfig.description}
+                            logo={this.state.logo}
+                            footer={this.state.ymlConfig.footer}
+                        />
+                    ))}
                 </div>
                 <div className="form-container">
                     <TextAreaEditor title="Configuration (.yml)" onTextChange={this.updateYmlConfig} accept=".yml" />
                     <TextAreaEditor title="Configuration (.css)" onTextChange={this.updateCssConfig} accept=".css" />
+                    <Form>
+                        <Form.Group>
+                            <Form.Label>Logo</Form.Label>
+                            <Form.Control type="file" placeholder="Enter file containing logo" onChange={this.loadLogo} />
+                        </Form.Group>
+                    </Form>
                 </div>
             </div>
         );

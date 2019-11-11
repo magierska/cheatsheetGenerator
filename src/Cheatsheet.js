@@ -1,23 +1,32 @@
-import React from 'react';
+import React, { Component } from 'react';
 import MethodsCard from './MethodsCard';
 import Header from './Header';
-import { content } from './content';
 import Footer from './Footer';
 import CardColumns from 'react-bootstrap/CardColumns';
 
-export default function Cheatsheet() {
-    return (
-        <div className="cheatsheet-page">
-            <Header />
-            <CardColumns>
-                <MethodsCard content={content.profile} />
-                <MethodsCard content={content.items} />
-                <MethodsCard content={content.bestStories} />
-                <MethodsCard content={content.topStories} />
-                <MethodsCard content={content.newStories} />
-                <MethodsCard content={content.latestStories} />
-            </CardColumns>
-            <Footer />
-        </div>
-    );
+class Cheatsheet extends Component {
+    render() {
+        return (
+            <div className="cheatsheet-page">
+                <Header
+                    name={this.props.name}
+                    description={this.props.description}
+                    logo={this.props.logo}
+                />
+                <CardColumns>
+                    {this.props.page.cards && this.props.page.cards.map((card, i) => (
+                        <MethodsCard
+                            key={i}
+                            content={card}
+                        />
+                    ))}
+                </CardColumns>
+                <Footer
+                    footer={this.props.footer}
+                />
+            </div>
+        );
+    }
 }
+
+export default Cheatsheet;
