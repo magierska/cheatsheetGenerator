@@ -27,7 +27,6 @@ class App extends Component {
 
     processYamlFile(e) {
         let content = yaml.safeLoad(e.target.result);
-        console.log(content);
         this.setState({
             content
         });

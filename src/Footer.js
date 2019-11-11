@@ -5,7 +5,7 @@ class Footer extends Component {
     render() {
         return (
             <div>
-                <p class="footer">{this.props.footer}</p>
+                <p className="footer">{this.props.footer}</p>
             </div>
         );
     }
