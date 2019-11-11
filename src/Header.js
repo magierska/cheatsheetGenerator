@@ -8,7 +8,7 @@ class Header extends Component {
                     <font className="name">{this.props.name}</font>
                     {" CHEAT SHEET"}</p>
                 <p>{this.props.description}</p>
-                <img src="logo.png" alt="Card" className="logo" />
+                <img src={this.props.logo} alt="Card" className="logo" />
             </div>
         );
     }

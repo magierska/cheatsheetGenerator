@@ -8,11 +8,14 @@ class App extends Component {
         super(props);
 
         this.state = {
-            content: { }
+            content: {},
+            logo: null
         }
 
         this.readConfigurationFile = this.readConfigurationFile.bind(this);
         this.processYamlFile = this.processYamlFile.bind(this);
+        this.loadLogo = this.loadLogo.bind(this);
+        this.setLogoFilePath = this.setLogoFilePath.bind(this);
     }
 
     readConfigurationFile(e) {
@@ -32,16 +35,33 @@ class App extends Component {
         });
     }
 
+    loadLogo(e) {
+        let file = e.target.files[0];
+        if (!file) {
+            return;
+        }
+        var reader = new FileReader();
+        reader.onload = this.setLogoFilePath;
+        reader.readAsDataURL(file);
+    }
+
+    setLogoFilePath(e) {
+        this.setState({
+            logo: e.target.result
+        });
+    }
+
     render() {
         return (
             <div>
                 <div className="pdf-container">
                     {this.state.content.pages && this.state.content.pages.map((page, i) => (
-                        <Cheatsheet 
+                        <Cheatsheet
                             key={i}
                             page={page}
                             name={this.state.content.name}
                             description={this.state.content.description}
+                            logo={this.state.logo}
                             footer={this.state.content.footer}
                         />
                     ))}
@@ -58,7 +78,7 @@ class App extends Component {
                         </Form.Group>
                         <Form.Group>
                             <Form.Label>Logo</Form.Label>
-                            <Form.Control type="file" placeholder="Enter file containing logo" />
+                            <Form.Control type="file" placeholder="Enter file containing logo" onChange={this.loadLogo} />
                         </Form.Group>
                     </Form>
                 </div>
