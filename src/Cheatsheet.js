@@ -1,36 +1,22 @@
 import React from 'react';
-import Card from './Card';
+import MethodsCard from './MethodsCard';
 import Header from './Header';
-import Parameter from './Parameter';
 import { content } from './content';
 import Footer from './Footer';
+import CardColumns from 'react-bootstrap/CardColumns';
 
 export default function Cheatsheet() {
     return (
-        <div style={{ paddingRight: '20px', paddingLeft: '20px', position: 'relative' }}>
+        <div className="cheatsheet-page">
             <Header />
-            {/* <div class="row">
-                <div class="col-sm-4"> */}
-                <div>
-                    <Card content={content.profile} />
-                    <Card content={content.items} />
-                {/* </div>
-                <div class="col-sm-4"> */}
-                    <Card content={content.bestStories} />
-                    <Card content={content.topStories} />
-                    <Card content={content.newStories} />
-                {/* </div>
-                <div class="col-sm-4"> */}
-                    <Card content={content.latestStories} />
-                    <Parameter 
-                        parameter={{
-                            name: 'max_items',
-                            desc: 'Maximum number of items to retrieve.\nIf max_items = null, returns all available.'
-                        }}
-                    />
-                    </div>
-                {/* </div>
-            </div> */}
+            <CardColumns>
+                <MethodsCard content={content.profile} />
+                <MethodsCard content={content.items} />
+                <MethodsCard content={content.bestStories} />
+                <MethodsCard content={content.topStories} />
+                <MethodsCard content={content.newStories} />
+                <MethodsCard content={content.latestStories} />
+            </CardColumns>
             <Footer />
         </div>
     );

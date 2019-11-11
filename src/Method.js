@@ -8,7 +8,11 @@ function generateParameter(param) {
 export default function Method({ method }) {
     return (
         <div>
-            <p><b>{method.name}(</b>{method.params && method.params.map(p => p.name).join(', ')}<b>)</b></p>            
+            <p>
+                <b>{method.name}(</b>
+                {method.params && method.params.map(p => p.name).join(', ')}
+                <b>)</b>
+            </p>            
             <p>{method.desc}</p>
             {method.params && method.params.map(p => 
                 <Parameter 
