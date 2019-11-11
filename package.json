@@ -10,12 +10,12 @@
     "@progress/kendo-react-pdf": "^1.2.0",
     "bootstrap": "^4.3.1",
     "canvg": "^1.5.2",
-    "fs": "0.0.1-security",
-    "js-yaml": "^3.13.1",
+    "css": "^2.2.4",
     "react": "^16.11.0",
     "react-bootstrap": "^1.0.0-beta.14",
     "react-dom": "^16.11.0",
-    "react-scripts": "1.1.4"
+    "react-scripts": "1.1.4",
+    "yaml": "^1.7.2"
   },
   "scripts": {
     "start": "react-scripts start",
