@@ -1,8 +1,30 @@
 import React, { Component } from 'react';
 import Cheatsheet from './Cheatsheet';
-import Form from 'react-bootstrap/Form';
+import TextAreaEditor from './TextAreaEditor';
+import Yaml from "yaml";
+import css from "css";
 
 class App extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            ymlConfig: null,
+            cssConfig: null
+        };
+    }
+
+    updateYmlConfig = (text) => {
+        const parsedYml = Yaml.parse(text);
+        this.setState({
+            ymlConfig: parsedYml
+        });
+    }
+
+
+    updateCssConfig = (text) => {
+        const parsedCss = css.parse(text);
+    }
+
     render() {
         return (
             <div>
@@ -11,20 +33,8 @@ class App extends Component {
                     <Cheatsheet />
                 </div>
                 <div className="form-container">
-                    <Form>
-                        <Form.Group>
-                            <Form.Label>Configuration (.json)</Form.Label>
-                            <Form.Control type="file" placeholder="Enter configuration file" />
-                        </Form.Group>
-                        <Form.Group>
-                            <Form.Label>Styles (.css)</Form.Label>
-                            <Form.Control type="file" placeholder="Enter styles file" />
-                        </Form.Group>
-                        <Form.Group>
-                            <Form.Label>Logo</Form.Label>
-                            <Form.Control type="file" placeholder="Enter file containing logo" />
-                        </Form.Group>
-                    </Form>
+                    <TextAreaEditor title="Configuration (.yml)" onTextChange={this.updateYmlConfig} accept=".yml" />
+                    <TextAreaEditor title="Configuration (.css)" onTextChange={this.updateCssConfig} accept=".css" />
                 </div>
             </div>
         );
