@@ -4,6 +4,7 @@ import TextAreaEditor from './TextAreaEditor';
 import Yaml from "yaml";
 import css from "css";
 import Form from 'react-bootstrap/Form';
+import { PDFExport } from '@progress/kendo-react-pdf';
 
 class App extends Component {
     constructor(props) {
@@ -13,10 +14,11 @@ class App extends Component {
             cssConfig: null,
             logo: null
         };
-      
+
         this.loadLogo = this.loadLogo.bind(this);
         this.setLogoFilePath = this.setLogoFilePath.bind(this);
     }
+    cheatsheet;
 
     updateYmlConfig = (text) => {
         const parsedYml = Yaml.parse(text);
@@ -49,20 +51,28 @@ class App extends Component {
         });
     }
 
+    exportPDF = () => {
+        this.cheatsheet.save();
+    }
+
     render() {
         return (
             <div>
                 <div className="pdf-container">
-                    {this.state.ymlConfig && this.state.ymlConfig.pages.map((page, i) => (
-                        <Cheatsheet
-                            key={i}
-                            page={page}
-                            name={this.state.ymlConfig.name}
-                            description={this.state.ymlConfig.description}
-                            logo={this.state.logo}
-                            footer={this.state.ymlConfig.footer}
-                        />
-                    ))}
+                    <PDFExport paperSize={['842pt', '595pt']}
+                        fileName="_____.pdf"
+                        ref={(r) => this.cheatsheet = r}>
+                        {this.state.ymlConfig && this.state.ymlConfig.pages.map((page, i) => (
+                            <Cheatsheet
+                                key={i}
+                                page={page}
+                                name={this.state.ymlConfig.name}
+                                description={this.state.ymlConfig.description}
+                                logo={this.state.logo}
+                                footer={this.state.ymlConfig.footer}
+                            />
+                        ))}
+                    </PDFExport>
                 </div>
                 <div className="form-container">
                     <TextAreaEditor title="Configuration (.yml)" onTextChange={this.updateYmlConfig} accept=".yml" />
@@ -73,6 +83,7 @@ class App extends Component {
                             <Form.Control type="file" placeholder="Enter file containing logo" onChange={this.loadLogo} />
                         </Form.Group>
                     </Form>
+                    <button onClick={this.exportPDF}>Download</button>
                 </div>
             </div>
         );
