@@ -28,6 +28,10 @@ class App extends Component {
 
     updateCssConfig = (text) => {
         const parsedCss = css.parse(text);
+        this.setState({
+            cssConfig: parsedCss
+        });
+    }
 
     loadLogo(e) {
         let file = e.target.files[0];
@@ -49,7 +53,7 @@ class App extends Component {
         return (
             <div>
                 <div className="pdf-container">
-                    {this.state.ymlConfig.pages && this.state.ymlConfig.pages.map((page, i) => (
+                    {this.state.ymlConfig && this.state.ymlConfig.pages.map((page, i) => (
                         <Cheatsheet
                             key={i}
                             page={page}

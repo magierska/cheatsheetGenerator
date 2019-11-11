@@ -10,6 +10,7 @@ class TextAreaEditor extends Component {
     }
 
     uploadText(text) {
+        this.props.onTextChange(text);
         this.setState({
             text: text
         });
