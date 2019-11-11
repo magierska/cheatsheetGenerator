@@ -26,7 +26,7 @@ class TextAreaEditor extends Component {
     render() {
         return (
             <Form>
-                <Form.Group>
+                <Form.Group controlId={this.props.controlId}>
                     <Form.Label>{this.props.title}</Form.Label>
                     <Form.Control type="file" placeholder="Upload configuration file" accept={this.props.accept} onChange={this.handleFileInput} />
                 </Form.Group>

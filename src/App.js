@@ -13,7 +13,7 @@ class App extends Component {
             cssConfig: null,
             logo: null
         };
-      
+
         this.loadLogo = this.loadLogo.bind(this);
         this.setLogoFilePath = this.setLogoFilePath.bind(this);
     }
@@ -65,10 +65,10 @@ class App extends Component {
                     ))}
                 </div>
                 <div className="form-container">
-                    <TextAreaEditor title="Configuration (.yml)" onTextChange={this.updateYmlConfig} accept=".yml" />
+                    <TextAreaEditor title="Configuration (.yml)" onTextChange={this.updateYmlConfig} accept=".yml" controlId="ymlInput" />
                     <TextAreaEditor title="Configuration (.css)" onTextChange={this.updateCssConfig} accept=".css" />
                     <Form>
-                        <Form.Group>
+                        <Form.Group controlId="logoInput">
                             <Form.Label>Logo</Form.Label>
                             <Form.Control type="file" placeholder="Enter file containing logo" onChange={this.loadLogo} />
                         </Form.Group>
