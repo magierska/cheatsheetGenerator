@@ -22,11 +22,15 @@ const generatePdf = async () => {
     return pdf;
 }
 
-/* GET users listing. */
 router.get('/', async function (req, res, next) {
+    res.header("Access-Control-Allow-Origin", "http://localhost:3000");
+    res.header("Access-Control-Allow-Credentials", "true");
+    res.header("Access-Control-Allow-Headers", "Origin,Content-Type, Authorization, x-id, Content-Length, X-Requested-With");
+    res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
     const pdf = await generatePdf();
-    res.contentType("application/pdf");
-    res.send(pdf);
+    res.contentType("arraybuffer")
+    res.type("arraybuffer");
+    res.send(Buffer.from(pdf.buffer));
 });
 
 module.exports = router;

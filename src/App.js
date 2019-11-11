@@ -4,6 +4,8 @@ import TextAreaEditor from './TextAreaEditor';
 import Yaml from "yaml";
 import css from "css";
 import Form from 'react-bootstrap/Form';
+import axios from 'axios';
+import FileDownload from "js-file-download";
 
 class App extends Component {
     constructor(props) {
@@ -49,6 +51,23 @@ class App extends Component {
         });
     }
 
+    exportPDF() {
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "http://localhost:8000/pdfexport", true);
+        xhr.responseType = "arraybuffer";
+        xhr.onload = function (e) {
+            console.log(this.response);
+            if (this.status === 200) {
+                var blob = new Blob([this.response], { type: "application/pdf" });
+                var link = document.createElement('a');
+                link.href = window.URL.createObjectURL(blob);
+                link.download = "cheatsheet.pdf"
+                link.click();
+            }
+        }
+        xhr.send();
+    }
+
     render() {
         return (
             <div>
@@ -73,6 +92,7 @@ class App extends Component {
                             <Form.Control type="file" placeholder="Enter file containing logo" onChange={this.loadLogo} />
                         </Form.Group>
                     </Form>
+                    <button onClick={this.exportPDF}>Download</button>
                 </div>
             </div>
         );
