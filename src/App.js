@@ -53,7 +53,7 @@ class App extends Component {
 
     exportPDF() {
         var xhr = new XMLHttpRequest();
-        xhr.open("GET", "http://localhost:8000/pdfexport", true);
+        xhr.open("POST", "http://localhost:8000/pdfexport", true);
         xhr.responseType = "arraybuffer";
         xhr.onload = function (e) {
             console.log(this.response);
@@ -65,7 +65,8 @@ class App extends Component {
                 link.click();
             }
         }
-        xhr.send();
+        xhr.setRequestHeader("Content-Type", "application/json");
+        xhr.send(JSON.stringify({ "AAA": 30 }));
     }
 
     render() {
