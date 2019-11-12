@@ -2,19 +2,19 @@ import React, { Component } from 'react';
 import Cheatsheet from './Cheatsheet';
 import TextAreaEditor from './TextAreaEditor';
 import Yaml from "yaml";
-import css from "css";
 import Form from 'react-bootstrap/Form';
 import axios from 'axios';
 import FileDownload from "js-file-download";
+import styled from 'styled-components'
 
 class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
             ymlConfig: null,
-            cssConfig: null,
             logo: null,
-            logoFile: null
+            logoFile: null,
+            cssStyledDiv: styled.div``
         };
 
         this.loadLogo = this.loadLogo.bind(this);
@@ -31,9 +31,8 @@ class App extends Component {
 
 
     updateCssConfig = (text) => {
-        const parsedCss = css.parse(text);
         this.setState({
-            cssConfig: parsedCss
+            cssStyledDiv: styled.div`${text}`
         });
     }
 
@@ -87,16 +86,18 @@ class App extends Component {
         return (
             <div>
                 <div className="pdf-container">
-                    {this.state.ymlConfig && this.state.ymlConfig.pages.map((page, i) => (
-                        <Cheatsheet
-                            key={i}
-                            page={page}
-                            name={this.state.ymlConfig.name}
-                            description={this.state.ymlConfig.description}
-                            logo={this.state.logo}
-                            footer={this.state.ymlConfig.footer}
-                        />
-                    ))}
+                    <this.state.cssStyledDiv>
+                        {this.state.ymlConfig && this.state.ymlConfig.pages.map((page, i) => (
+                            <Cheatsheet
+                                key={i}
+                                page={page}
+                                name={this.state.ymlConfig.name}
+                                description={this.state.ymlConfig.description}
+                                logo={this.state.logo}
+                                footer={this.state.ymlConfig.footer}
+                            />
+                        ))}
+                    </this.state.cssStyledDiv>
                 </div>
                 <div className="form-container">
                     <TextAreaEditor title="Configuration (.yml)" onTextChange={this.updateYmlConfig} accept=".yml" controlId="ymlInput" />
