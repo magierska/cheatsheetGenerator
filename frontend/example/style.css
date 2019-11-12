@@ -1,53 +1,63 @@
-/* .header {
-} */
+.header {
+  background-color: gold;
+}
 
 .header-title {
   color: rgba(255, 102, 0);
 }
 
-/* .header-title-name {
-} */
-
-/* .logo {
-} */
-
-.card {
-  border: none;
+.header-title-name {
+  font-style: italic;
 }
 
-.card-header {
-  border-top: 1px solid rgba(255, 102, 0);
-  border-left: 1px solid rgba(255, 102, 0);
-  border-right: 1px solid rgba(255, 102, 0);
-  background-color: rgba(255, 102, 0, 0.6);
+.header-description {
   color: white;
 }
 
-.card-body {
-  border: 1px solid rgba(255, 102, 0);
+.logo {
+  transform: rotate(180deg);
 }
 
-/* .method {
-} */
+.card {
+  border: 3px solid rgba(255, 102, 0);
+}
 
-/* .method-name {
-} */
+.card-header {
+  border: none;
+  background-color: white;
+}
 
-/* .method-parameter {
-} */
+.card-body {
+  background-color: lightskyblue;
+}
 
-/* .method-description {
-} */
+.method {
+  border-top: 2px dotted black;
+}
+
+.method-name {
+  color: gold;
+}
+
+.method-parameter {
+  font-size: x-small;
+}
+
+.method-description {
+  font-style: italic;
+}
 
 .parameter {
   border-left: 2px solid rgba(255, 102, 0);
 }
 
-/* .parameter-name {
-} */
+.parameter-name {
+  text-decoration: underline;
+}
 
-/* .parameter-description {
-} */
+.parameter-description {
+  text-align: right;
+}
 
 .footer {
   font-weight: bold;
