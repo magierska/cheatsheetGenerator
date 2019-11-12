@@ -85,7 +85,7 @@ p {
 .matrix-corner {
   position: absolute;
   right: -10px;
-  bottom: -6px;
+  top: -2px;
   font-size: 45px;
   font-weight: bold;
   font-family: 'Orbitron';

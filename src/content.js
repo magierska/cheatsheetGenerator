@@ -134,7 +134,7 @@ export const content = {
                 params: [
                     {
                         name: 'ids',
-                        desc: 'List of ids.'
+                        desc: 'List of ids'
                     }
                 ],
                 desc: 'Get Hacker News by ids'
@@ -142,7 +142,17 @@ export const content = {
             {
                 name: 'get_max_item_id',
                 desc: 'Hacker News item largest id'
-            }
+            },
+            {
+                name: 'get_comments',
+                params: [
+                    {
+                        name: 'item',
+                        desc: 'Item whose children (comments) will be retrieved'
+                    }
+                ],
+                desc: 'Hacker News nested comments'
+            },
         ]
     }
 };

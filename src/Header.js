@@ -8,6 +8,7 @@ export default function Header() {
             {" CHEAT SHEET"}</p>
             <p>An R wrapper for the official Hacker News API</p>
             <img src="logo.png" alt="Card" class="logo" />
+            <p class="matrix-corner">011010110100101<br/>010110100110010</p>
         </div>
     );
 }

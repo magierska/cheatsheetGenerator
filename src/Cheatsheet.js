@@ -12,7 +12,7 @@ export default function Cheatsheet() {
             <div class="row">
                 <div class="col-sm-4">
                     <Card content={content.profile} />
-                    <Card content={content.items} />
+                    <Card content={content.latestStories} />
                 </div>
                 <div class="col-sm-4">
                     <Card content={content.bestStories} />
@@ -20,7 +20,7 @@ export default function Cheatsheet() {
                     <Card content={content.newStories} />
                 </div>
                 <div class="col-sm-4">
-                    <Card content={content.latestStories} />
+                    <Card content={content.items} />
                     <Parameter 
                         parameter={{
                             name: 'max_items',
