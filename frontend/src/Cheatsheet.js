@@ -14,7 +14,8 @@ class Cheatsheet extends Component {
                     logo={this.props.logo}
                 />
                 <CardColumns>
-                    {this.props.page.cards && this.props.page.cards.map((card, i) => (
+                    {this.props.page && this.props.page.cards 
+                        && this.props.page.cards.map((card, i) => (
                         <MethodsCard
                             key={i}
                             content={card}

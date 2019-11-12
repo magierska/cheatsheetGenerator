@@ -9,7 +9,7 @@ class TextAreaEditor extends Component {
         };
     }
 
-    uploadText(text) {
+    onTextChange(text) {
         this.props.onTextChange(text);
         this.setState({
             text: text
@@ -19,7 +19,7 @@ class TextAreaEditor extends Component {
     handleFileInput = (event) => {
         const blob = event.target.files[0];
         var reader = new FileReader();
-        reader.addEventListener("loadend", (event) => this.uploadText(event.target.result));
+        reader.addEventListener("loadend", (event) => this.onTextChange(event.target.result));
         reader.readAsText(blob);
     }
 
@@ -31,7 +31,7 @@ class TextAreaEditor extends Component {
                     <Form.Control type="file" placeholder="Upload configuration file" accept={this.props.accept} onChange={this.handleFileInput} />
                 </Form.Group>
                 <Form.Group>
-                    <Form.Control as="textarea" rows="12" value={this.state.text} onChange={(event) => this.props.onTextChange(event.target.value)} />
+                    <Form.Control as="textarea" rows="12" value={this.state.text} onChange={(event) => this.onTextChange(event.target.value)} />
                 </Form.Group>
             </Form>
         )

@@ -2,6 +2,10 @@ import React from 'react';
 import Parameter from './Parameter';
 
 export default function Method({ method }) {
+    if (!method) {
+        return null;
+    }
+
     return (
         <div className="method">
             <p>

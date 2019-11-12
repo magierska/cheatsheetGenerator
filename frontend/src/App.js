@@ -23,10 +23,13 @@ class App extends Component {
     }
 
     updateYmlConfig = (text) => {
-        const parsedYml = Yaml.parse(text);
-        this.setState({
-            ymlConfig: parsedYml
-        });
+        try {
+            const parsedYml = Yaml.parse(text);
+            this.setState({
+                ymlConfig: parsedYml
+            });        
+        }
+        catch(error) { }
     }
 
 
@@ -87,7 +90,8 @@ class App extends Component {
             <div>
                 <div className="pdf-container">
                     <this.state.cssStyledDiv>
-                        {this.state.ymlConfig && this.state.ymlConfig.pages.map((page, i) => (
+                        {this.state.ymlConfig && this.state.ymlConfig.pages 
+                            && this.state.ymlConfig.pages.map((page, i) => (
                             <Cheatsheet
                                 key={i}
                                 page={page}
