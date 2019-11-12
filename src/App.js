@@ -13,11 +13,13 @@ class App extends Component {
         this.state = {
             ymlConfig: null,
             cssConfig: null,
-            logo: null
+            logo: null,
+            logoFile: null
         };
 
         this.loadLogo = this.loadLogo.bind(this);
         this.setLogoFilePath = this.setLogoFilePath.bind(this);
+        this.exportPDF = this.exportPDF.bind(this);
     }
 
     updateYmlConfig = (text) => {
@@ -40,6 +42,9 @@ class App extends Component {
         if (!file) {
             return;
         }
+        this.setState({
+            logoFile: file
+        });
         var reader = new FileReader();
         reader.onload = this.setLogoFilePath;
         reader.readAsDataURL(file);
@@ -65,9 +70,17 @@ class App extends Component {
                 link.click();
             }
         }
+        var yamlConfigFile = this.createInMemoryFile(Yaml.stringify(this.state.ymlConfig));
+
         var formData = new FormData();
-        formData.append("test", "test-value.pdf");
+        formData.append("logoInput", this.state.logoFile);
+        formData.append("yamlConfigFile", yamlConfigFile);
         xhr.send(formData);
+    }
+
+    createInMemoryFile(data) {
+        var blob = new Blob([data], { type: 'text' });
+        return blob;
     }
 
     render() {
