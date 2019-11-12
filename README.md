@@ -27,7 +27,7 @@ pages:
 
 ```
 
-Elements of pages array are cards located on specific page. Cards are dispalyed in columns in order set in configuration file. For each card title and methods can be defined. Methods is an array containing names, descriptions and parameters. Method parameters are printed between "()" next to method name. In addition, if parameter description is defined, parameter description will appear under method description.
+Elements of pages array are cards located on specific page. Cards are displayed in columns in order set in configuration file. For each card title and methods can be defined. Methods is an array containing names, descriptions and parameters. Method parameters are printed between "()" next to method name. In addition, if parameter description is defined, parameter description will appear under method description.
 
 ## Styles configuration
 
