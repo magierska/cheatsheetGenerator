@@ -11,12 +11,12 @@ export default function MethodsCard({ content }) {
         <Card>
             <Card.Header>{content.title}</Card.Header>
             <Card.Body>
-                    {content.methods && content.methods.map((m, i) => 
-                        <Method 
-                            key={i}
-                            method={m} 
-                        />
-                    )}
+                {content.methods && content.methods.map((m, i) =>
+                    <Method
+                        key={i}
+                        method={m}
+                    />
+                )}
             </Card.Body>
         </Card>
     );

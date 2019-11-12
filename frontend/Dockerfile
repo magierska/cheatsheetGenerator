@@ -2,15 +2,15 @@
 FROM node:12.2.0-alpine
 
 # set working directory
-WORKDIR /app
+WORKDIR /web
 
-# add `/app/node_modules/.bin` to $PATH
-ENV PATH /app/node_modules/.bin:$PATH
+# add `/web/node_modules/.bin` to $PATH
+ENV PATH /web/node_modules/.bin:$PATH
 
-# install and cache app dependencies
-COPY package.json /app/package.json
+# install and cache web dependencies
+COPY package.json /web/package.json
 RUN npm install --silent
 RUN npm install react-scripts@3.0.1 -g --silent
 
-# start app
+# start web
 CMD ["npm", "start"]

@@ -3,8 +3,6 @@ import Cheatsheet from './Cheatsheet';
 import TextAreaEditor from './TextAreaEditor';
 import Yaml from "yaml";
 import Form from 'react-bootstrap/Form';
-import axios from 'axios';
-import FileDownload from "js-file-download";
 import styled from 'styled-components'
 
 class App extends Component {
@@ -27,9 +25,9 @@ class App extends Component {
             const parsedYml = Yaml.parse(text);
             this.setState({
                 ymlConfig: parsedYml
-            });        
+            });
         }
-        catch(error) { }
+        catch (error) { }
     }
 
 
@@ -90,17 +88,17 @@ class App extends Component {
             <div>
                 <div className="pdf-container">
                     <this.state.cssStyledDiv>
-                        {this.state.ymlConfig && this.state.ymlConfig.pages 
+                        {this.state.ymlConfig && this.state.ymlConfig.pages
                             && this.state.ymlConfig.pages.map((page, i) => (
-                            <Cheatsheet
-                                key={i}
-                                page={page}
-                                name={this.state.ymlConfig.name}
-                                description={this.state.ymlConfig.description}
-                                logo={this.state.logo}
-                                footer={this.state.ymlConfig.footer}
-                            />
-                        ))}
+                                <Cheatsheet
+                                    key={i}
+                                    page={page}
+                                    name={this.state.ymlConfig.name}
+                                    description={this.state.ymlConfig.description}
+                                    logo={this.state.logo}
+                                    footer={this.state.ymlConfig.footer}
+                                />
+                            ))}
                     </this.state.cssStyledDiv>
                 </div>
                 <div className="form-container">
