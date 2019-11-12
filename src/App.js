@@ -65,8 +65,9 @@ class App extends Component {
                 link.click();
             }
         }
-        xhr.setRequestHeader("Content-Type", "application/json");
-        xhr.send(JSON.stringify({ "AAA": 30 }));
+        var formData = new FormData();
+        formData.append("test", "test-value.pdf");
+        xhr.send(formData);
     }
 
     render() {

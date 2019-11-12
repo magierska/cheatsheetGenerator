@@ -2,6 +2,7 @@ var express = require('express');
 var cors = require('cors');
 const puppeteer = require('puppeteer');
 var router = express.Router();
+var formidable = require('formidable');
 
 const generatePdf = async () => {
     const browser = await puppeteer.launch();
@@ -23,9 +24,13 @@ const generatePdf = async () => {
     return pdf;
 }
 
+
 router.options('/', cors());
 router.post('/', async function (req, res, next) {
-    console.log(req.body)
+    var form = new formidable.IncomingForm();
+    form.parse(req, function (err, fields, files) {
+        console.log(fields);
+    })
     res.header("Access-Control-Allow-Origin", "http://localhost:3000");
     res.header("Access-Control-Allow-Credentials", "true");
     res.header("Access-Control-Allow-Headers", "Origin,Content-Type, Authorization, x-id, Content-Length, X-Requested-With");
