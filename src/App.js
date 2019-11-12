@@ -3,6 +3,8 @@ import Cheatsheet from './Cheatsheet';
 import TextAreaEditor from './TextAreaEditor';
 import Yaml from "yaml";
 import Form from 'react-bootstrap/Form';
+import axios from 'axios';
+import FileDownload from "js-file-download";
 import styled from 'styled-components'
 
 class App extends Component {
@@ -11,11 +13,13 @@ class App extends Component {
         this.state = {
             ymlConfig: null,
             logo: null,
+            logoFile: null,
             cssStyledDiv: styled.div``
         };
 
         this.loadLogo = this.loadLogo.bind(this);
         this.setLogoFilePath = this.setLogoFilePath.bind(this);
+        this.exportPDF = this.exportPDF.bind(this);
     }
 
     updateYmlConfig = (text) => {
@@ -37,6 +41,9 @@ class App extends Component {
         if (!file) {
             return;
         }
+        this.setState({
+            logoFile: file
+        });
         var reader = new FileReader();
         reader.onload = this.setLogoFilePath;
         reader.readAsDataURL(file);
@@ -46,6 +53,33 @@ class App extends Component {
         this.setState({
             logo: e.target.result
         });
+    }
+
+    exportPDF() {
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "http://localhost:8000/pdfexport", true);
+        xhr.responseType = "arraybuffer";
+        xhr.onload = function (e) {
+            console.log(this.response);
+            if (this.status === 200) {
+                var blob = new Blob([this.response], { type: "application/pdf" });
+                var link = document.createElement('a');
+                link.href = window.URL.createObjectURL(blob);
+                link.download = "cheatsheet.pdf"
+                link.click();
+            }
+        }
+        var yamlConfigFile = this.createInMemoryFile(Yaml.stringify(this.state.ymlConfig));
+
+        var formData = new FormData();
+        formData.append("logoInput", this.state.logoFile);
+        formData.append("yamlConfigFile", yamlConfigFile);
+        xhr.send(formData);
+    }
+
+    createInMemoryFile(data) {
+        var blob = new Blob([data], { type: 'text' });
+        return blob;
     }
 
     render() {
@@ -74,6 +108,7 @@ class App extends Component {
                             <Form.Control type="file" placeholder="Enter file containing logo" onChange={this.loadLogo} />
                         </Form.Group>
                     </Form>
+                    <button onClick={this.exportPDF}>Download</button>
                 </div>
             </div>
         );
