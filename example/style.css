@@ -1,0 +1,54 @@
+/* .header {
+} */
+
+.header-title {
+  color: rgba(255, 102, 0);
+}
+
+/* .header-title-name {
+} */
+
+/* .logo {
+} */
+
+.card {
+  border: none;
+}
+
+.card-header {
+  border-top: 1px solid rgba(255, 102, 0);
+  border-left: 1px solid rgba(255, 102, 0);
+  border-right: 1px solid rgba(255, 102, 0);
+  background-color: rgba(255, 102, 0, 0.6);
+  color: white;
+}
+
+.card-body {
+  border: 1px solid rgba(255, 102, 0);
+}
+
+/* .method {
+} */
+
+/* .method-name {
+} */
+
+/* .method-parameter {
+} */
+
+/* .method-description {
+} */
+
+.parameter {
+  border-left: 2px solid rgba(255, 102, 0);
+}
+
+/* .parameter-name {
+} */
+
+/* .parameter-description {
+} */
+
+.footer {
+  font-weight: bold;
+}

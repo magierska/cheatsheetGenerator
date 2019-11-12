@@ -3,13 +3,13 @@ import Parameter from './Parameter';
 
 export default function Method({ method }) {
     return (
-        <div>
+        <div className="method">
             <p>
-                <b>{method.name}(</b>
-                {method.params && method.params.map(p => p.name).join(', ')}
-                <b>)</b>
+                <font className="method-name">{method.name}(</font>
+                    <font className="method-parameter">{method.params && method.params.map(p => p.name).join(', ')}</font>
+                <font className="method-name">)</font>
             </p>            
-            <p>{method.description}</p>
+            <p className="method-description">{method.description}</p>
             {method.params && method.params.map((p, i) => 
                 <Parameter 
                     key={i}

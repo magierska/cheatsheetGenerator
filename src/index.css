@@ -56,12 +56,12 @@ p {
   flex: 0 1 auto;
 }
 
-.header .title {
+.header-title {
   /* color: rgba(255, 102, 0); */
   font-size: large;
 }
 
-.header .title .name {
+.header-title-name {
   font-size: xx-large;
   font-weight: bold;
 }
@@ -79,13 +79,13 @@ p {
   overflow-y: auto;
 }
 
-.card-columns .card {
+.card {
   /* border: none; */
   margin-top: 5px;
   margin-bottom: 5px;
 }
 
-.card-columns .card .card-header {
+.card-header {
   /* border: none; */
   /* background-color: rgba(255, 102, 0, 0.6);
   color: white; */
@@ -96,9 +96,13 @@ p {
   padding-top: 10px;
 }
 
-.card-columns .card .card-body {
+.card-body {
   padding: 10px 10px 10px 10px;
   /* border: 1px solid; */
+}
+
+.method-name {
+  font-weight: bold;
 }
 
 .parameter {
