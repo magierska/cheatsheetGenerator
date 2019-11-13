@@ -1,0 +1,29 @@
+matrix:
+  include:
+    # frontend React app
+    - language: node_js
+      node_js:
+        - "stable"
+      cache:
+        npm: true
+      before_install:
+        - git diff --name-only $TRAVIS_COMMIT_RANGE | grep -qE '^(frontend/||\.travis.yml)' || exit 0
+        - cd frontend
+      install:
+        - npm install
+      script:
+        - npm run build
+
+    # backend expressJS app
+    - language: node_js
+      node_js:
+        - "stable"
+      cache:
+        npm: true
+      before_install:
+        - git diff --name-only $TRAVIS_COMMIT_RANGE | grep -qE '^(backend/||\.travis.yml)' || exit 0
+        - cd backend
+      install:
+        - npm install
+
+      
