@@ -5,9 +5,11 @@ var router = express.Router();
 var formidable = require('formidable');
 
 const generatePdf = async (ymlConfig, logoFile) => {
-    const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch({
+        args: ['--no-sandbox']
+    });
     const page = await browser.newPage();
-    await page.goto('http://localhost:3000/');
+    await page.goto('http://web:3000/');
     await page.emulateMedia('screen');
     const ymlInput = await page.$('#ymlInput');
     const logoInput = await page.$('#logoInput');
