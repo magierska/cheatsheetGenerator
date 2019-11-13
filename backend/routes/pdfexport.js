@@ -8,23 +8,23 @@ function getFilepathOrNull(files, field) {
     return files[field] === undefined ? null : files[field].path;
 }
 
-const generatePdf = async (ymlConfig, logoFile) => {
+const generatePdf = async (ymlConfig, cssConfig, logoFile) => {
+    uploadFileToInput = async (page, file, selector) => {
+        if (file !== null) {
+            const input = await page.$(selector);
+            await input.uploadFile(file);
+            await page.waitForSelector(selector);
+        }
+    };
     const browser = await puppeteer.launch({
         args: ['--no-sandbox']
     });
     const page = await browser.newPage();
     await page.goto('http://web:3000/');
     await page.emulateMedia('screen');
-    if (ymlConfig !== null) {
-        const ymlInput = await page.$('#ymlInput');
-        await ymlInput.uploadFile(ymlConfig);
-        await page.waitForSelector('#ymlInput');
-    }
-    if (logoFile !== null) {
-        const logoInput = await page.$('#logoInput');
-        await logoInput.uploadFile(logoFile);
-        await page.waitForSelector("#logoInput");
-    }
+    await uploadFileToInput(page, ymlConfig, '#ymlInput');
+    await uploadFileToInput(page, cssConfig, '#cssInput');
+    await uploadFileToInput(page, logoFile, '#logoInput');
     const pdf = await page.pdf({
         printBackground: true,// print background colors
         width: '842px',
@@ -46,6 +46,7 @@ router.post('/', async function (req, res, next) {
         res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
         const pdf = await generatePdf(
             getFilepathOrNull(files, 'yamlConfigFile'),
+            getFilepathOrNull(files, 'cssConfigFile'),
             getFilepathOrNull(files, 'logoInput')
         );
         res.contentType("arraybuffer")

@@ -12,6 +12,7 @@ class App extends Component {
             ymlConfig: null,
             logo: null,
             logoFile: null,
+            cssConfig: null,
             cssStyledDiv: styled.div``
         };
 
@@ -33,6 +34,7 @@ class App extends Component {
 
     updateCssConfig = (text) => {
         this.setState({
+            cssConfig: text,
             cssStyledDiv: styled.div`${text}`
         });
     }
@@ -71,10 +73,12 @@ class App extends Component {
             }
         }
         var yamlConfigFile = this.createInMemoryFile(Yaml.stringify(this.state.ymlConfig));
+        var cssConfigFile = this.createInMemoryFile(this.state.cssConfig);
 
         var formData = new FormData();
         formData.append("logoInput", this.state.logoFile);
         formData.append("yamlConfigFile", yamlConfigFile);
+        formData.append("cssConfigFile", cssConfigFile);
         xhr.send(formData);
     }
 
@@ -103,7 +107,7 @@ class App extends Component {
                 </div>
                 <div className="form-container">
                     <TextAreaEditor title="Configuration (.yml)" onTextChange={this.updateYmlConfig} accept=".yml" controlId="ymlInput" />
-                    <TextAreaEditor title="Configuration (.css)" onTextChange={this.updateCssConfig} accept=".css" />
+                    <TextAreaEditor title="Configuration (.css)" onTextChange={this.updateCssConfig} accept=".css" controlId="cssInput" />
                     <Form>
                         <Form.Group controlId="logoInput">
                             <Form.Label>Logo</Form.Label>
