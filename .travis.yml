@@ -2,6 +2,7 @@ matrix:
   include:
     # frontend React app
     - language: node_js
+      env: COMMAND=frontend
       node_js:
         - "stable"
       cache:
@@ -11,11 +12,13 @@ matrix:
         - cd frontend
       install:
         - npm install
+        - npm install react-scripts@3.0.1
       script:
         - npm run build
 
     # backend expressJS app
     - language: node_js
+      env: COMMAND=backend
       node_js:
         - "stable"
       cache:
