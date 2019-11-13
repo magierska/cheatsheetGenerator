@@ -4,18 +4,27 @@ const puppeteer = require('puppeteer');
 var router = express.Router();
 var formidable = require('formidable');
 
-const generatePdf = async (ymlConfig, logoFile) => {
+function getFilepathOrNull(files, field) {
+    return files[field] === undefined ? null : files[field].path;
+}
+
+const generatePdf = async (ymlConfig, cssConfig, logoFile) => {
+    uploadFileToInput = async (page, file, selector) => {
+        if (file !== null) {
+            const input = await page.$(selector);
+            await input.uploadFile(file);
+            await page.waitForSelector(selector);
+        }
+    };
     const browser = await puppeteer.launch({
         args: ['--no-sandbox']
     });
     const page = await browser.newPage();
     await page.goto('http://web:3000/');
     await page.emulateMedia('screen');
-    const ymlInput = await page.$('#ymlInput');
-    const logoInput = await page.$('#logoInput');
-    await ymlInput.uploadFile(ymlConfig);
-    await logoInput.uploadFile(logoFile);
-    await page.waitForSelector("#logoInput");
+    await uploadFileToInput(page, ymlConfig, '#ymlInput');
+    await uploadFileToInput(page, cssConfig, '#cssInput');
+    await uploadFileToInput(page, logoFile, '#logoInput');
     const pdf = await page.pdf({
         printBackground: true,// print background colors
         width: '842px',
@@ -35,7 +44,11 @@ router.post('/', async function (req, res, next) {
         res.header("Access-Control-Allow-Credentials", "true");
         res.header("Access-Control-Allow-Headers", "Origin,Content-Type, Authorization, x-id, Content-Length, X-Requested-With");
         res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
-        const pdf = await generatePdf(files['yamlConfigFile'].path, files['logoInput'].path);
+        const pdf = await generatePdf(
+            getFilepathOrNull(files, 'yamlConfigFile'),
+            getFilepathOrNull(files, 'cssConfigFile'),
+            getFilepathOrNull(files, 'logoInput')
+        );
         res.contentType("arraybuffer")
         res.type("arraybuffer");
         res.send(Buffer.from(pdf.buffer));
