@@ -20,7 +20,7 @@ const generatePdf = async (ymlConfig, cssConfig, logoFile) => {
         args: ['--no-sandbox']
     });
     const page = await browser.newPage();
-    await page.goto('http://web:3000/');
+    await page.goto('https://cheatsheet-generator-web-test.herokuapp.com');
     await page.emulateMedia('screen');
     await uploadFileToInput(page, ymlConfig, '#ymlInput');
     await uploadFileToInput(page, cssConfig, '#cssInput');
@@ -37,10 +37,10 @@ const generatePdf = async (ymlConfig, cssConfig, logoFile) => {
 
 
 router.options('/', cors());
-router.post('/', async function (req, res, next) {
+router.post('/', cors(), async function (req, res, next) {
     var form = new formidable.IncomingForm();
     form.parse(req, async function (err, fields, files) {
-        res.header("Access-Control-Allow-Origin", "http://localhost:3000");
+        res.header("Access-Control-Allow-Origin", "https://cheatsheet-generator-web-test.herokuapp.com");
         res.header("Access-Control-Allow-Credentials", "true");
         res.header("Access-Control-Allow-Headers", "Origin,Content-Type, Authorization, x-id, Content-Length, X-Requested-With");
         res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
