@@ -60,7 +60,7 @@ class App extends Component {
 
     exportPDF() {
         var xhr = new XMLHttpRequest();
-        xhr.open("POST", "http://localhost:8000/pdfexport", true);
+        xhr.open("POST", "https://cheatsheet-generator-app-test.herokuapp.com//pdfexport", true);
         xhr.responseType = "arraybuffer";
         xhr.onload = function (e) {
             console.log(this.response);
