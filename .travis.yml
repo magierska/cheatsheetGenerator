@@ -32,3 +32,9 @@ matrix:
     - cd backend
     install:
     - npm install
+    deploy:
+    - provider: heroku
+      api_key:
+        secure: aO0t9zCgRhkf2gd8RSWRZy3wjM68d3d3jsoZ68K79E+4SY1IGrlWUOPMOH5XshT5tkFkMn3yBEtd6eoeoLL4oR3KlkV+ect5xa+7BtDJGvwxxa2Ze5u1NrglJSDu7r8P7YTjAJRzAzSZ6ngaFznYnrOSBzFJUFk6MX3/NKGhx9cGPte8OnCl/baNTecLFanPYXSRsj71aKT4H+SwX/Q9ju6RDNhmpQxFTdrOf2OvKs8FCFmrMURdykK/Vj6eZQp/+91kroP4GWA8JCxEwU2UVBX6aKR2nR03QWnysoUh6Hs/o0w1saYOA5g7EXfTRBcOUoOyFdwxlJZN0jdubJ7HL3YkUAzv9QQhaAfqjskeJGouQqn3w9OB5c4VaTkQNbpJwn4p/e4eTmlRvK2TJ5hTemUp2rhEiB1E8f8vZkh+5pIDPXXqYdyy9KAbPePKP+9/1h7XoMNh/oU9Lhkw25QpsaPlHAh5c6G9Lh+aLTRvTQswhrBqsoAbbYnLsLP9T2OkJ1Dq92IbfIcFoEI4i1CwZZYGxE6xkp5mtPod5GVUOmeGdt4yvG40knW/NmtrZ6TBEl2SK4hueyjD+MsWK/vQ4vwpjWwA76DXtvHvqPv03aX5zcvfFlsElaA2MPOzGzjRN4TAtH4THWh10FWTbvpUKFeFImeeXI9rYHifEKlddPo=
+      app:
+        master: cheatsheet-generator-app-test
