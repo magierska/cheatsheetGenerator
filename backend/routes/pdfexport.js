@@ -37,7 +37,7 @@ const generatePdf = async (ymlConfig, cssConfig, logoFile) => {
 
 
 router.options('/', cors());
-router.post('/', async function (req, res, next) {
+router.post('/', cors(), async function (req, res, next) {
     var form = new formidable.IncomingForm();
     form.parse(req, async function (err, fields, files) {
         res.header("Access-Control-Allow-Origin", "https://cheatsheet-generator-web-test.herokuapp.com");
