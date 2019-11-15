@@ -1,14 +1,16 @@
 version: '3'
 services:
   web:
-    build: ./frontend
+    build: 
+      context: ./frontend
+      args: 
+        API_URL: http:\/\/localhost:8000
     container_name: frontend
-    volumes:
-      - './frontend:/web'
-      - '/web/node_modules'
     ports:
       - '3000:3000'
   app:
+    environment:
+      - CHEATSHEET_GENERATOR_CLIENT_URL=http://web:3000
     build: ./backend
     container_name: backend
     volumes:
