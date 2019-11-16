@@ -1,29 +1,7 @@
 import React, { Component } from 'react';
-import Cheatsheet from './Cheatsheet';
-import TextAreaEditor from './TextAreaEditor';
-import LogoUploader from './LogoUploader';
+import PdfContainer from './PdfContainer';
+import FormContainer from './FormContainer';
 import styled from 'styled-components'
-import CssBaseline from '@material-ui/core/CssBaseline';
-import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
-import CloudDownloadIcon from '@material-ui/icons/CloudDownload';
-import { withStyles } from '@material-ui/core/styles';
-import CheatsheetEmpty from './CheatsheetEmpty';
-
-const theme = createMuiTheme({
-    palette: {
-        type: 'light'
-    }
-});
-
-const styles = theme => ({
-    downloadButton: {
-        marginTop: '5px'
-    },
-    rightIcon: {
-        marginLeft: theme.spacing(1),
-    }
-});
 
 class App extends Component {
     constructor(props) {
@@ -32,7 +10,7 @@ class App extends Component {
             jsonConfig: null,
             logo: null,
             logoFile: null,
-            cssConfig: null,
+            cssConfig: '',
             cssStyledDiv: styled.div``
         };
 
@@ -54,7 +32,9 @@ class App extends Component {
     updateCssConfig = (text) => {
         this.setState({
             cssConfig: text,
-            cssStyledDiv: styled.div`${text}`
+            cssStyledDiv: styled.div`
+            ${text}
+            `
         });
     }
 
@@ -95,42 +75,23 @@ class App extends Component {
     }
 
     render() {
-        const { classes } = this.props;
-
         return (
             <div>
-                <div className="pdf-container">
-                    {this.state.jsonConfig && this.state.jsonConfig.pages
-                        && this.state.jsonConfig.pages.length > 0
-                        ? <this.state.cssStyledDiv>
-                            {this.state.jsonConfig.pages.map((page, i) => (
-                                <Cheatsheet
-                                    key={i}
-                                    page={page}
-                                    name={this.state.jsonConfig.name}
-                                    description={this.state.jsonConfig.description}
-                                    logo={this.state.logo}
-                                    footer={this.state.jsonConfig.footer}
-                                />
-                            ))}
-                        </this.state.cssStyledDiv>
-                        : <CheatsheetEmpty />}
-                </div>
-                <div className="form-container">
-                    <ThemeProvider theme={theme}>
-                        <CssBaseline />
-                        <TextAreaEditor title="Configuration (.json)" onTextChange={this.updateJsonConfig} accept=".json" mode="json" />
-                        <TextAreaEditor title="Configuration (.css)" onTextChange={this.updateCssConfig} accept=".css" mode="css" />
-                        <LogoUploader onLogoLoad={this.setLogoFilePath} />
-                        <Button variant="contained" color="primary" onClick={this.exportPDF} className={classes.downloadButton}>
-                            {"Download "}
-                            <CloudDownloadIcon className={classes.rightIcon} />
-                        </Button>
-                    </ThemeProvider>
-                </div>
+                <PdfContainer 
+                    cssConfig={this.state.cssConfig}
+                    cssStyledDiv={this.state.cssStyledDiv}
+                    jsonConfig={this.state.jsonConfig}
+                    logo={this.state.logo}
+                />
+                <FormContainer 
+                    updateCssConfig={this.updateCssConfig}
+                    updateJsonConfig={this.updateJsonConfig}
+                    setLogoFilePath={this.setLogoFilePath}
+                    exportPDF={this.exportPDF}
+                />
             </div>
         );
     }
 }
 
-export default withStyles(styles)(App);
+export default App;
