@@ -20,14 +20,6 @@
   src: url("fonts/Raleway/Raleway-Bold.ttf") format("truetype");
 } */
 
-body {
-  margin: 0;
-  padding: 0;
-  /* font-family: 'Raleway'; */
-  font-size: small;
-  /* white-space: pre-wrap; */
-}
-
 .ace_editor {
   margin: 1px !important;
 }
@@ -38,6 +30,9 @@ p {
 
 .pdf-container {
   display: inline-block;
+  margin: 0;
+  padding: 0;
+  font-size: small;
 }
 
 .form-container {

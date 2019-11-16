@@ -12,18 +12,24 @@ Content of cheatsheet can be configured by loading .json file and/or editing Con
 File structure is presented below:
 
 ```
-name: Library name
-description: Library description
-footer: Content of footer
-pages:
-- cards:
-  - title: Card title
-    methods:
-    - name: Method name
-      description: Method description
-      params:
-      - name: Method parameter
-        description: Parameter description
+{
+	"name": "Library name",
+	"description": "Library description",
+	"footer": "Content of footer",
+	"pages": [{
+    	"cards": [{
+      		"title": "Card title",
+      		"methods": [{
+        		"name": "Method name",
+        		"description": "Method description",
+        		"params": [{
+          			"name": "Method parameter",
+					"description": "Parameter description"
+        		}]
+      		}]
+    	}]
+  	}]
+}
 
 ```
 
