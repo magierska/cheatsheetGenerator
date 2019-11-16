@@ -20,12 +20,8 @@
   src: url("fonts/Raleway/Raleway-Bold.ttf") format("truetype");
 } */
 
-body {
-  margin: 0;
-  padding: 0;
-  /* font-family: 'Raleway'; */
-  font-size: small;
-  /* white-space: pre-wrap; */
+.ace_editor {
+  margin: 1px !important;
 }
 
 p {
@@ -34,11 +30,15 @@ p {
 
 .pdf-container {
   display: inline-block;
+  margin: 0;
+  padding: 0;
+  font-size: small;
 }
 
 .form-container {
   display: inline-block;
   position: absolute;
+  margin: 10px;
 }
 
 .cheatsheet-page {
@@ -50,6 +50,12 @@ p {
   width: 842px; 
   height: 595px; 
   overflow: hidden;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
 }
 
 .header {
