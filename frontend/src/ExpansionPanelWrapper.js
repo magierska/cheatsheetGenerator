@@ -32,7 +32,7 @@ class ExpansionPanelWrapper extends Component {
         const { classes } = this.props;
 
         return (
-            <ExpansionPanel defaultExpanded>
+            <ExpansionPanel>
                 <ExpansionPanelSummary
                     expandIcon={<ExpandMoreIcon />}
                     aria-controls={`content-${this.props.mode}`}

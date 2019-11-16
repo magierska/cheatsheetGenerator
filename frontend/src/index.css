@@ -57,6 +57,12 @@ p {
   overflow: hidden;
 }
 
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
+
 .header {
   flex: 0 1 auto;
 }

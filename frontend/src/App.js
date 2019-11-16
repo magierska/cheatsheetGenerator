@@ -8,6 +8,7 @@ import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import CloudDownloadIcon from '@material-ui/icons/CloudDownload';
 import { withStyles } from '@material-ui/core/styles';
+import CheatsheetEmpty from './CheatsheetEmpty';
 
 const theme = createMuiTheme({
     palette: {
@@ -57,9 +58,10 @@ class App extends Component {
         });
     }
 
-    setLogoFilePath(logo) {
+    setLogoFilePath(logo, file) {
         this.setState({
-            logo
+            logo,
+            logoFile: file
         });
     }
 
@@ -98,9 +100,10 @@ class App extends Component {
         return (
             <div>
                 <div className="pdf-container">
-                    <this.state.cssStyledDiv>
-                        {this.state.jsonConfig && this.state.jsonConfig.pages
-                            && this.state.jsonConfig.pages.map((page, i) => (
+                    {this.state.jsonConfig && this.state.jsonConfig.pages
+                        && this.state.jsonConfig.pages.length > 0
+                        ? <this.state.cssStyledDiv>
+                            {this.state.jsonConfig.pages.map((page, i) => (
                                 <Cheatsheet
                                     key={i}
                                     page={page}
@@ -110,7 +113,8 @@ class App extends Component {
                                     footer={this.state.jsonConfig.footer}
                                 />
                             ))}
-                    </this.state.cssStyledDiv>
+                        </this.state.cssStyledDiv>
+                        : <CheatsheetEmpty />}
                 </div>
                 <div className="form-container">
                     <ThemeProvider theme={theme}>

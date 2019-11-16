@@ -13,9 +13,9 @@ class LogoUploader extends Component {
         this.loadLogo = this.loadLogo.bind(this);
     }
 
-    onLogoLoad(e) {
+    onLogoLoad(e, file) {
         const logo = e.target.result;
-        this.props.onLogoLoad(logo)
+        this.props.onLogoLoad(logo, file)
         this.setState({
             logo
         });
@@ -31,7 +31,7 @@ class LogoUploader extends Component {
             logoFile: file
         });
         var reader = new FileReader();
-        reader.onload = this.onLogoLoad;
+        reader.onload = (e) => this.onLogoLoad(e, file);
         reader.readAsDataURL(file);
         this.setState({
             fileName: file.name
