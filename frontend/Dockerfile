@@ -10,8 +10,7 @@ WORKDIR /web
 ENV PATH /web/node_modules/.bin:$PATH
 
 # install and cache web dependencies
-COPY . .
-RUN sed -i "s/{{ API_URL }}/$API_URL/" /web/public/index.html 
+COPY ./package.json /web/package.json
 RUN npm install --silent
 RUN npm install react-scripts@3.0.1 -g --silent
 

@@ -14,8 +14,6 @@ matrix:
     - npm install react-scripts@3.0.1
     script:
     - npm run build
-    before_deploy:
-    - sed -i "s/{{ API_URL }}/$API_URL/" public/index.html 
     deploy:
     - provider: heroku
       api_key:

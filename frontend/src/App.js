@@ -4,7 +4,6 @@ import TextAreaEditor from './TextAreaEditor';
 import Yaml from "yaml";
 import Form from 'react-bootstrap/Form';
 import styled from 'styled-components'
-import { getRuntimeConfig } from "./utils";
 
 class App extends Component {
     constructor(props) {
@@ -17,7 +16,6 @@ class App extends Component {
             cssStyledDiv: styled.div``
         };
 
-        this.config = getRuntimeConfig();
         this.loadLogo = this.loadLogo.bind(this);
         this.setLogoFilePath = this.setLogoFilePath.bind(this);
         this.exportPDF = this.exportPDF.bind(this);
@@ -62,7 +60,7 @@ class App extends Component {
 
     exportPDF() {
         var xhr = new XMLHttpRequest();
-        xhr.open("POST", `${this.config["API_BASE_URL"]}/pdfexport`, true);
+        xhr.open("POST", `${process.env.REACT_APP_API_BASE_URL}/pdfexport`, true);
         xhr.responseType = "arraybuffer";
         xhr.onload = function (e) {
             console.log(this.response);
