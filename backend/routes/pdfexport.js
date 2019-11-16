@@ -8,7 +8,7 @@ function getFilepathOrNull(files, field) {
     return files[field] === undefined ? null : files[field].path;
 }
 
-const generatePdf = async (ymlConfig, cssConfig, logoFile) => {
+const generatePdf = async (jsonConfig, cssConfig, logoFile) => {
     uploadFileToInput = async (page, file, selector) => {
         if (file !== null) {
             const input = await page.$(selector);
@@ -22,9 +22,9 @@ const generatePdf = async (ymlConfig, cssConfig, logoFile) => {
     const page = await browser.newPage();
     await page.goto(process.env.CHEATSHEET_GENERATOR_CLIENT_URL);
     await page.emulateMedia('screen');
-    await uploadFileToInput(page, ymlConfig, '#ymlInput');
-    await uploadFileToInput(page, cssConfig, '#cssInput');
-    await uploadFileToInput(page, logoFile, '#logoInput');
+    await uploadFileToInput(page, jsonConfig, '#input-file-json');
+    await uploadFileToInput(page, cssConfig, '#input-file-css');
+    await uploadFileToInput(page, logoFile, '#input-file-logo');
     const pdf = await page.pdf({
         printBackground: true,// print background colors
         width: '842px',
@@ -44,7 +44,7 @@ router.post('/', cors(), async function (req, res, next) {
         res.header("Access-Control-Allow-Headers", "Origin,Content-Type, Authorization, x-id, Content-Length, X-Requested-With");
         res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
         const pdf = await generatePdf(
-            getFilepathOrNull(files, 'yamlConfigFile'),
+            getFilepathOrNull(files, 'jsonConfigFile'),
             getFilepathOrNull(files, 'cssConfigFile'),
             getFilepathOrNull(files, 'logoInput')
         );

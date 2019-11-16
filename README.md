@@ -7,7 +7,7 @@ docker-compose up
 
 ## Content configuration
 
-Content of cheatsheet can be configured by loading .yml file and/or editing Configuration (.yml) input field.
+Content of cheatsheet can be configured by loading .json file and/or editing Configuration (.json) input field.
 
 File structure is presented below:
 
