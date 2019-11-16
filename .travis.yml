@@ -7,7 +7,7 @@ matrix:
     cache:
       npm: true
     before_install:
-    - git diff --name-only $TRAVIS_COMMIT_RANGE | grep -qE '^(frontend/||\.travis.yml)' || travis_terminate 1
+    - git diff --name-only $TRAVIS_COMMIT_RANGE | grep -qE '^(frontend/||\.travis.yml)' || travis_terminate 0
     - cd frontend
     install:
     - npm install
@@ -27,7 +27,7 @@ matrix:
     cache:
       npm: true
     before_install:
-    - git diff --name-only $TRAVIS_COMMIT_RANGE | grep -qE '^(backend/||\.travis.yml)' || travis_terminate 1
+    - git diff --name-only $TRAVIS_COMMIT_RANGE | grep -qE '^(backend/||\.travis.yml)' || travis_terminate 0
     - cd backend
     install:
     - npm install
