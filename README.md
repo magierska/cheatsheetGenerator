@@ -24,7 +24,7 @@ File structure is presented below:
         		"description": "Method description",
         		"params": [{
           			"name": "Method parameter",
-					"description": "Parameter description"
+				"description": "Parameter description"
         		}]
       		}]
     	}]
