@@ -7,15 +7,13 @@ matrix:
     cache:
       npm: true
     before_install:
-    - git diff --name-only $TRAVIS_COMMIT_RANGE | grep -qE '^(frontend/||\.travis.yml)' || travis_terminate 1
+    - git diff --name-only $TRAVIS_COMMIT_RANGE | grep -qE '^(frontend/||\.travis.yml)' || travis_terminate 0
     - cd frontend
     install:
     - npm install
     - npm install react-scripts@3.0.1
     script:
     - npm run build
-    before_deploy:
-    - sed -i "s/{{ API_URL }}/$API_URL/" public/index.html 
     deploy:
     - provider: heroku
       api_key:
@@ -29,7 +27,7 @@ matrix:
     cache:
       npm: true
     before_install:
-    - git diff --name-only $TRAVIS_COMMIT_RANGE | grep -qE '^(backend/||\.travis.yml)' || travis_terminate 1
+    - git diff --name-only $TRAVIS_COMMIT_RANGE | grep -qE '^(backend/||\.travis.yml)' || travis_terminate 0
     - cd backend
     install:
     - npm install

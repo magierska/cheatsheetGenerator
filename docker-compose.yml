@@ -1,11 +1,11 @@
 version: '3'
 services:
   web:
-    build: 
-      context: ./frontend
-      args: 
-        API_URL: http:\/\/localhost:8000
+    build: ./frontend
     container_name: frontend
+    volumes:
+      - './frontend:/web'
+      - '/web/node_modules'
     ports:
       - '3000:3000'
   app:
