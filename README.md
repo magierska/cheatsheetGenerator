@@ -5,6 +5,8 @@ Run the app in a docker container with:
 docker-compose up
 ```
 
+Configuration examples, that can be uploaded to generator, can be found [here](https://github.com/magierska/cheatsheetGenerator/tree/master/example).
+
 ## Content configuration
 
 Content of cheatsheet can be configured by loading .json file and/or editing Configuration (.json) input field.
