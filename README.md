@@ -1,5 +1,7 @@
 # cheatsheetGenerator
 
+The app is available on heroku: https://cheatsheet-generator-web-test.herokuapp.com/
+
 Run the app in a docker container with:
 ```
 docker-compose up
