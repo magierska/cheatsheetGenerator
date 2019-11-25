@@ -21,18 +21,26 @@ File structure is presented below:
 	"description": "Library description",
 	"footer": "Content of footer",
 	"pages": [{
-    	"cards": [{
-      		"title": "Card title",
-      		"methods": [{
-        		"name": "Method name",
-        		"description": "Method description",
-        		"params": [{
-          			"name": "Method parameter",
-				"description": "Parameter description"
-        		}]
-      		}]
-    	}]
-  	}]
+    "cards": [{
+      "title": "Card title",
+      "methods": [{
+        "name": "method",
+        "description": "Method description",
+        "params": [{
+          "name": "param",
+          "description": "Parameter description"
+        }]
+      },{
+        "name": "method_without_brackets",
+        "description": "Method without parameters in brackets",
+        "withoutBrackets": true,
+        "params": [{
+          "name": "param",
+          "description": "Parameter description"
+        }]
+      }]
+    }]
+  }]
 }
 
 ```
