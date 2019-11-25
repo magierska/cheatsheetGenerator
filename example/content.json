@@ -156,31 +156,21 @@
 		{
 			"cards": [
 				{
-					"title": "Items",
+					"title": "Examples",
 					"methods": [
 						{
-							"name": "get_item_by_id",
-							"description": "Get Hacker News by Id",
+							"name": "%>>%",
+							"withoutBrackets": true,
+							"description": "Example for pipeR",
 							"params": [
 								{
-									"name": "id",
-									"description": "Id of the item, that should be retrieved"
+									"name": "param",
+									"description": "Parameter description"
 								}
+							],
+							"examples": [
+								"df %>>% plot(col = \"red\")"
 							]
-						},
-						{
-							"name": "get_item_by_ids",
-							"description": "Get Hacker News by ids",
-							"params": [
-								{
-									"name": "ids",
-									"description": "List of ids."
-								}
-							]
-						},
-						{
-							"name": "get_max_item_id",
-							"description": "Hacker News item largest id"
 						}
 					]
 				}
