@@ -37,7 +37,10 @@ File structure is presented below:
         "params": [{
           "name": "param",
           "description": "Parameter description"
-        }]
+        }],
+        "examples": [
+          "method_without_brackets(1)"
+        ]
       }]
     }]
   }]
@@ -146,5 +149,12 @@ Also parameters (for each method) can be changed:
 
 .parameter-description {
   text-align: right;
+}
+```
+
+To change styles of examples this class should be used:
+```
+.example {
+  font-size: x-small;
 }
 ```

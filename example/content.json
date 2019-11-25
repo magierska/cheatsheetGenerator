@@ -167,6 +167,9 @@
 									"name": "param",
 									"description": "Parameter description"
 								}
+							],
+							"examples": [
+								"df %>>% plot(col = \"red\")"
 							]
 						}
 					]

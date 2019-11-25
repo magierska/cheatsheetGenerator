@@ -1,5 +1,6 @@
 import React from 'react';
 import Parameter from './Parameter';
+import Example from './Example';
 
 export default function Method({ method }) {
     if (!method) {
@@ -18,6 +19,12 @@ export default function Method({ method }) {
                 <Parameter 
                     key={i}
                     parameter={p}
+                />
+            )}
+            {method.examples && method.examples.map((e, i) =>  
+                <Example 
+                    key={i}
+                    example={e}
                 />
             )}
         </div>

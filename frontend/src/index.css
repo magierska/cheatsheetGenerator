@@ -120,6 +120,10 @@ p {
   font-weight: bold;
 }
 
+.example {
+  font-style: italic;
+}
+
 .footer {
   flex: 0 1 auto;
   float: right;
