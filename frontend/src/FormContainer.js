@@ -30,10 +30,27 @@ class FormContainer extends Component {
             <div className="form-container">
                 <ThemeProvider theme={theme}>
                     <CssBaseline />
-                    <TextAreaEditor title="Configuration (.json)" onTextChange={this.props.updateJsonConfig} accept=".json" mode="json" />
-                    <TextAreaEditor title="Configuration (.css)" onTextChange={this.props.updateCssConfig} accept=".css" mode="css" />
+                    <TextAreaEditor 
+                        title="Configuration (.json)" 
+                        onTextChange={this.props.updateJsonConfig} 
+                        accept=".json" 
+                        mode="json" 
+                        valid={this.props.jsonValid} 
+                    />
+                    <TextAreaEditor 
+                        title="Configuration (.css)" 
+                        onTextChange={this.props.updateCssConfig} 
+                        accept=".css" 
+                        mode="css" 
+                        valid={this.props.cssValid} 
+                    />
                     <LogoUploader onLogoLoad={this.props.setLogoFilePath} />
-                    <Button variant="contained" color="primary" onClick={this.props.exportPDF} className={classes.downloadButton}>
+                    <Button 
+                        variant="contained" 
+                        color="primary" 
+                        onClick={this.props.exportPDF} 
+                        className={classes.downloadButton}
+                    >
                         {"Download "}
                         <CloudDownloadIcon className={classes.rightIcon} />
                     </Button>

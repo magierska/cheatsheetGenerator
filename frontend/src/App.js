@@ -1,41 +1,71 @@
 import React, { Component } from 'react';
 import PdfContainer from './PdfContainer';
 import FormContainer from './FormContainer';
-import styled from 'styled-components'
+import styled from 'styled-components';
+import css from 'css';
 
 class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
             jsonConfig: null,
+            jsonValid: true,
             logo: null,
             logoFile: null,
             cssConfig: '',
-            cssStyledDiv: styled.div``
+            cssStyledDiv: styled.div``,
+            cssValid: true
         };
 
         this.setLogoFilePath = this.setLogoFilePath.bind(this);
         this.exportPDF = this.exportPDF.bind(this);
     }
 
+    checkIfOnlyWhitespace = (text) => {
+        if (!text.trim().length) {
+            return true;
+        }
+        return false;
+    }
+
     updateJsonConfig = (text) => {
+        if (this.checkIfOnlyWhitespace(text)){
+            return;
+        }
         try {
             const parsedJson = JSON.parse(text);
             this.setState({
-                jsonConfig: parsedJson
+                jsonConfig: parsedJson,
+                jsonValid: true
             });
         }
-        catch (error) { }
+        catch (error) { 
+            this.setState({
+                jsonValid: false
+            });
+        }
     }
 
 
     updateCssConfig = (text) => {
-        this.setState({
-            cssConfig: text,
-            cssStyledDiv: styled.div`
-            ${text}
-            `
-        });
+        if (this.checkIfOnlyWhitespace(text)){
+            return;
+        }
+        try {
+            css.parse(text);
+            this.setState({
+                cssValid: true,
+                cssConfig: text,
+                cssStyledDiv: styled.div`
+                ${text}
+                `
+            });
+        }
+        catch (error) {
+            this.setState({
+                cssValid: false
+            });
+        }
     }
 
     setLogoFilePath(logo, file) {
@@ -76,7 +106,7 @@ class App extends Component {
 
     render() {
         return (
-            <div>
+            <div className="fit-height">
                 <PdfContainer 
                     cssConfig={this.state.cssConfig}
                     cssStyledDiv={this.state.cssStyledDiv}
@@ -88,6 +118,8 @@ class App extends Component {
                     updateJsonConfig={this.updateJsonConfig}
                     setLogoFilePath={this.setLogoFilePath}
                     exportPDF={this.exportPDF}
+                    jsonValid={this.state.jsonValid}
+                    cssValid={this.state.cssValid}
                 />
             </div>
         );

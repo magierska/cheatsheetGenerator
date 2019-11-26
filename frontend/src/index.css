@@ -1,27 +1,5 @@
-/* @font-face {
-  font-family: "Orbitron";
-  src: url("fonts/Orbitron/Orbitron-Regular.ttf") format("truetype");
-}
-
-@font-face {
-  font-family: "Orbitron";
-  font-weight: bold;
-  src: url("fonts/Orbitron/Orbitron-Bold.ttf") format("truetype");
-}
-
-@font-face {
-  font-family: "Raleway";
-  src: url("fonts/Raleway/Raleway-Regular.ttf") format("truetype");
-}
-
-@font-face {
-  font-family: "Raleway";
-  font-weight: bold;
-  src: url("fonts/Raleway/Raleway-Bold.ttf") format("truetype");
-} */
-
-.ace_editor {
-  margin: 1px !important;
+html, body, #root {
+  height: 100%;
 }
 
 p {
@@ -33,6 +11,7 @@ p {
   margin: 0;
   padding: 0;
   font-size: small;
+  height: 100%;
 }
 
 .form-container {
@@ -52,9 +31,34 @@ p {
   overflow: hidden;
 }
 
+.cheatsheet-page-empty {
+  height: inherit;
+}
+
+.fit-height {
+  height: 100%;
+}
+
 @keyframes blinker {
   50% {
     opacity: 0;
+  }
+}
+
+@media (max-height: 600px) {
+  .cheatsheet-page-empty {
+    height: 100%;
+  }
+}
+
+@media (max-width: 1435px) {
+  .form-container {
+    width: calc(100% - 862px);
+    min-width: 350px;
+  }
+
+  .ace_editor {
+    width: 100% !important;
   }
 }
 

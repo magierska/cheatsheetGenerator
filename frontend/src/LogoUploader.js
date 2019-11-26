@@ -46,6 +46,7 @@ class LogoUploader extends Component {
                 accept="image/*"
                 fileName={this.state.fileName}
                 handleFileInput={this.loadLogo}
+                valid={true}
             >
                 {this.state.logo && <img src={this.state.logo} alt="Logo" />}
             </ExpansionPanelWrapper>
