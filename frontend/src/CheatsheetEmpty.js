@@ -34,7 +34,7 @@ class CheatsheetEmpty extends Component {
         const { classes } = this.props;
 
         return (
-            <div className="cheatsheet-page">
+            <div className="cheatsheet-page cheatsheet-page-empty">
                 <Card className={classes.card}>
                     <CardContent className={classes.cardContent}>
                         <div>

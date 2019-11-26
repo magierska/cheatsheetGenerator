@@ -59,9 +59,11 @@ The exemplary cheatsheet with possible changes is presented below:
 
 <img src="documentation/css-vis.png" width="500" />
 
-To edit styles for whole cheatsheet do not specify class:
+To edit styles for whole cheatsheet, use `cheatsheet-page` class:
 ```
-background-color: lightGray;
+.cheatsheet-page {
+  background-color: lightGray;
+}
 ```
 
 Header:

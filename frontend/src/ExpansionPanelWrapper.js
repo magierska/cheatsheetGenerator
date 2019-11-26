@@ -8,13 +8,14 @@ import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import IconButton from '@material-ui/core/IconButton';
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
+import ErrorOutlineIcon from '@material-ui/icons/ErrorOutline';
 
 const styles = theme => ({
     title: {
-        flexBasis: '33.33%'
+        flexBasis: '45%'
     },
     fileName: {
-        flexBasis: '33.33%',
+        flexBasis: '45%',
         color: theme.palette.text.secondary
     },
     upload: {
@@ -38,7 +39,12 @@ class ExpansionPanelWrapper extends Component {
                     aria-controls={`content-${this.props.mode}`}
                     id={`header-${this.props.mode}`}
                 >
-                    <Typography className={classes.title}>{this.props.title}</Typography>
+                    <Typography className={classes.title}>
+                        {this.props.title}
+                        {!this.props.valid &&
+                            <ErrorOutlineIcon color="error" />
+                        }
+                    </Typography>
                     <Typography className={classes.fileName}>{this.props.fileName}</Typography>
                     <div className={classes.upload}>
                         <input

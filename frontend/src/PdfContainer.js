@@ -7,7 +7,7 @@ class PdfContainer extends Component {
         return (
             <div className="pdf-container">
                 {this.props.jsonConfig && this.props.jsonConfig.pages
-                    && this.props.jsonConfig.pages.length > 0
+                    && Array.isArray(this.props.jsonConfig.pages) && this.props.jsonConfig.pages.length > 0
                     ? <this.props.cssStyledDiv>
                         {this.props.jsonConfig.pages.map((page, i) => (
                             <Cheatsheet
