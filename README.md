@@ -9,13 +9,12 @@ docker-compose up
 
 Configuration examples, that can be uploaded to generator, can be found [here](https://github.com/magierska/cheatsheetGenerator/tree/master/example).
 
-## Galery
+## Gallery
 
 ### <a href="https://github.com/magierska/cheatsheetGenerator/tree/master/example/shinyJS">shinyJS</a>
 
 <a href="https://github.com/magierska/cheatsheetGenerator/tree/master/example/shinyJS/cheatsheet.pdf">
-  <img src="example/shinyJS/cheatsheet-1.png" width="500"/>
-  <img src="example/shinyJS/cheatsheet-2.png" width="500"/>
+  <img src="example/shinyJS/images/cheatsheet-1.png" width="300"/> <img src="example/shinyJS/images/cheatsheet-2.png" width="300"/>
 </a>
 
 ## Content configuration
@@ -66,7 +65,9 @@ You can configure cheatsheet styles with css. Upload your .css file and/or edit 
 ### General
 The exemplary cheatsheet with possible changes is presented below. Configuration files for this example can be found <a href="https://github.com/magierska/cheatsheetGenerator/tree/master/example/readme-example">here</a>.
 
-<img src="documentation/css-vis.png" width="500" />
+<a href="https://github.com/magierska/cheatsheetGenerator/tree/master/example/readme-example/cheatsheet.pdf">
+  <img src="example/readme-example/images/css-vis.png" width="300" />
+</a>
 
 To edit styles for whole cheatsheet, use `cheatsheet-page` class:
 ```
@@ -110,7 +111,7 @@ Footer:
 
 ### Card
 
-<img src="documentation/css-card-vis.png" width="300" />
+<img src="example/readme-example/images/css-card-vis.png" width="200" />
 
 For changes affecting cards use these classes:
 

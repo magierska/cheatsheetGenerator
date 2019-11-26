@@ -104,6 +104,25 @@
 					]
 				},
 				{
+					"title": "Examples",
+					"methods": [
+						{
+							"name": "%>>%",
+							"withoutBrackets": true,
+							"description": "Example for pipeR",
+							"params": [
+								{
+									"name": "param",
+									"description": "Parameter description"
+								}
+							],
+							"examples": [
+								"df %>>% plot(col = \"red\")"
+							]
+						}
+					]
+				},
+				{
 					"title": "Profile",
 					"methods": [
 						{
@@ -148,29 +167,6 @@
 						{
 							"name": "get_max_item_id",
 							"description": "Hacker News item largest id"
-						}
-					]
-				}
-			]
-		},
-		{
-			"cards": [
-				{
-					"title": "Examples",
-					"methods": [
-						{
-							"name": "%>>%",
-							"withoutBrackets": true,
-							"description": "Example for pipeR",
-							"params": [
-								{
-									"name": "param",
-									"description": "Parameter description"
-								}
-							],
-							"examples": [
-								"df %>>% plot(col = \"red\")"
-							]
 						}
 					]
 				}
