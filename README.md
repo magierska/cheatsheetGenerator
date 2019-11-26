@@ -9,6 +9,15 @@ docker-compose up
 
 Configuration examples, that can be uploaded to generator, can be found [here](https://github.com/magierska/cheatsheetGenerator/tree/master/example).
 
+## Galery
+
+### <a href="https://github.com/magierska/cheatsheetGenerator/tree/master/example/shinyJS">shinyJS</a>
+
+<a href="https://github.com/magierska/cheatsheetGenerator/tree/master/example/shinyJS/cheatsheet.pdf">
+  <img src="example/shinyJS/cheatsheet-1.png" width="500"/>
+  <img src="example/shinyJS/cheatsheet-2.png" width="500"/>
+</a>
+
 ## Content configuration
 
 Content of cheatsheet can be configured by loading .json file and/or editing Configuration (.json) input field.
@@ -55,7 +64,7 @@ Elements of pages array are cards located on specific page. Cards are displayed 
 You can configure cheatsheet styles with css. Upload your .css file and/or edit Configuration (.css) input field.
 
 ### General
-The exemplary cheatsheet with possible changes is presented below:
+The exemplary cheatsheet with possible changes is presented below. Configuration files for this example can be found <a href="https://github.com/magierska/cheatsheetGenerator/tree/master/example/readme-example">here</a>.
 
 <img src="documentation/css-vis.png" width="500" />
 

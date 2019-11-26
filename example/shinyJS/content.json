@@ -1,0 +1,275 @@
+{
+	"name": "",
+	"description": "Perform common useful JavaScript operations in Shiny apps without any JS background",
+	"footer": "https://deanattali.com/shinyjs",
+	"pages": [
+		{
+			"cards": [
+				{
+					"title": "Before you start",
+					"methods": [
+						{
+							"name": "useShinyjs",
+							"description": "In order to use any shinyjs function in a Shiny app, you must first call useShinyjs() anywhere in the app’s UI",
+							"params": [{
+								"name": "rmd",
+								"description" : "Enable to use inside an interactive R markdowndocument"
+							},
+							{
+								"name": "debug",
+								"description" : "Enable default debugging in JS console"
+							},
+							{
+								"name": "html",
+								"description" : "Enable if your shiny app builds the entire user interface with a custom HTML file."
+							}]
+						}
+					]
+				},
+				{
+					"title": "Interactive mode",
+					"methods": [
+						{
+							"name": "runcode",
+							"withoutBrackets": true,
+							"description": "Adds a text input to your app that lets you run arbitrary R code live. To enable, call runcodeUI() in the UI and runcodeServer() in serverFunction"
+						}
+					]
+				},
+				{
+					"title": "Logs",
+					"methods":[
+						{
+							"name": "showLog",
+							"description": "Print any JavaScript console.log() messages in the R console"
+						},
+						{
+							"name": "logjs",
+							"description": "Print a message to the JavaScript console",
+							"params": [{
+								"name": "text"
+							}]
+						}
+					]
+				},
+				{
+					"title" : "Events",
+					"methods": [
+						{
+							"name": "onevent",
+							"description": "Run an R expression when an element is clicked. Use onclick() when handling mouse clicks and skip the event parameter",
+							"params": [
+								{
+									"name": "event"
+								},
+								{
+									"name": "id"
+								},
+								{
+									"name": "expr",
+									"description": "R expression or function to run after the event is triggered"
+								},
+								{
+									"name": "add",
+									"description" : "Enable if expr should run after previously defined onevent calls. Otherwise they are overwritten"
+								}
+							]
+						}
+					]
+				},
+				{
+					"title": "CSS",
+					"methods": [
+						{
+							"name": "addClass / removeClass / toggleClass ",
+							"description": "Adds or removes class from CSS element",
+							"params": [{
+								"name": "id"
+								},
+								{
+								"name": 
+								"class",
+								"description" : "The CSS class to add/remove"},
+								{
+								"name" : "selector"
+								},
+								{
+								"name": "condition"
+								}
+							]
+						},
+						{
+							"name": "inlineCSS",
+							"description": "Easily add inline CSS to a Shiny app.",
+							"params":[
+								{
+								"name": "rules",
+								"description": " string with valid CSS code or list(selector = declarations) where declarations is a string or vector of declarations."
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"cards": [
+				{
+					"title": "State functions",
+					"methods": [
+						{
+							"name": "enable / disable / toggleState ",
+							"description": "Enable or disable an input element, such as a button or a text input",
+							"params" : [{
+								"name" : "id"
+							},
+							{
+								"name" : "selector"
+							},
+							{
+								"name": "condition"
+							}
+						]
+						},
+						{
+							"name": "disabled",
+							"description": "Initialize Shiny input as disabled",
+							"params": [{
+								"name": "...",
+								"description" : "Shiny input (or tagList or list of tags) to disable"
+							}]
+						},
+						{
+							"name": "reset",
+							"description": "Reset input widget to it's original state.",
+							"params" : [{
+								"name": "id",
+								"description" : "The id of the input element or the id of an HTML tag with input elements"
+							}]
+						}
+					]
+				},
+				{
+					"title" : "Custom JavaScript",
+					"methods": [
+						{
+							"name": "runjs",
+							"description": "Run arbitrary JS code",
+							"params" : [{
+								"name" : "code"
+							}]
+						},
+						{
+							"name": "extendShinyJS",
+							"description": "Write your own JS functions and run them with shinyjs()",
+							"params" : [{
+								"name" : "script"
+							},
+							{
+								"name" : "text"
+							},
+							{
+								"name" : "functions"
+							}]
+						}
+					]
+				},
+				{
+					"title": "Visibility",
+					"methods": [
+						{
+							"name": "show / show Element / hide / toggle / toggleElement ",
+							"description": "Display element. Use showElement and toggleElement for S4 objects.",
+							"params" : [
+								{
+									"name": "id"
+								},
+								{
+									"name": "anim",
+									"description": "if TRUE then animate the behaviour"
+								},
+								{
+									"name": "animType",
+									"description": "The type of animation, \"slide\" or \"fade\""
+								},
+								{
+									"name": "time",
+									"description": "Animation length in seconds."
+								},
+								{
+									"name": "selector"
+								}
+							]
+						},
+						{
+							"name": "hidden",
+							"description": "Initialize a Shiny tag as invisible",
+							"params": [{
+								"name": "...",
+								"description" : "Shiny input (or tagList or list of tags) to make invisible"
+							}]
+						}
+					]
+				},
+				{
+					"title": "Other",
+					"methods": [
+						{
+							"name": "html",
+							"description": "Change HTML of an element",
+							"params" : [{
+								"name" : "id"
+							},
+							{
+								"name" : "html",
+								"description" : "HTML/text to place inside element"
+							},
+							{
+								"name": "add",
+								"description" : "if TRUE then append html to the existing contents"
+							},
+							{
+								"name" : "selector"
+							}]
+						},
+						{
+							"name": "alert / info ",
+							"description": "show message to the user",
+							"params" : [{
+								"name": "text"
+							}]
+						},
+						{
+							"name": "delay",
+							"description": "Execute R code with a delay",
+							"params": [{
+								"name": "ms",
+								"description" : "delay length in miliseconds"
+							},
+							{
+								"name" : "expr"
+							}]
+						},
+						{
+							"name" : "Common Parameters",
+                            "withoutBrackets": true,
+							"params" : [{
+								"name" : "id",
+								"description" : "The id of the element/Shiny tag"
+							},
+							{
+								"name" : "selector",
+								"description": "JQuery selector. Ignored if the id argument is given"
+							},
+							{
+								"name": "condition",
+								"description": "When is the toggle action performed"
+							}]
+							
+						}
+					]
+				}
+			]
+		}
+	]
+}
