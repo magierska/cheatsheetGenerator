@@ -80,7 +80,7 @@ class TextAreaEditor extends Component {
                 handleFileInput={this.handleFileInput}
                 valid={this.props.valid}
             >
-                <Box border={3} borderColor={this.props.valid ? "primary.main" : "error.main"} width="100%">
+                <Box border={3} borderColor={this.props.valid ? "primary.main" : "error.main"} width="fit-content">
                     <AceEditor
                         placeholder="Type here..."
                         mode={this.props.mode}

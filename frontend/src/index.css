@@ -20,6 +20,10 @@ p {
   margin: 10px;
 }
 
+.logo-image {
+  width: 100%;
+}
+
 .cheatsheet-page {
   padding-left: 10px;
   padding-right: 10px;

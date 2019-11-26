@@ -48,35 +48,8 @@ class LogoUploader extends Component {
                 handleFileInput={this.loadLogo}
                 valid={true}
             >
-                {this.state.logo && <img src={this.state.logo} alt="Logo" />}
+                {this.state.logo && <img src={this.state.logo} alt="Logo" className="logo-image" />}
             </ExpansionPanelWrapper>
-            // <ExpansionPanel>
-            //     <ExpansionPanelSummary
-            //         expandIcon={<ExpandMoreIcon />}
-            //         aria-controls={`content-${this.props.mode}`}
-            //         id={`header-${this.props.mode}`}
-            //     >
-            //         <Typography className={classes.title}>{this.props.title}</Typography>
-            //         <Typography className={classes.fileName}>{this.state.fileName}</Typography>
-            //         <div className={classes.upload}>
-            //             <input
-            //                 accept={this.props.accept}
-            //                 style={{ display: 'none' }}
-            //                 id="logo-file"
-            //                 type="file"
-            //                 onChange={this.loadLogo}
-            //             />
-            //             <label htmlFor="logo-file">
-            //                 <IconButton aria-label="Upload" component="span" color="primary">
-            //                     <CloudUploadIcon />
-            //                 </IconButton>
-            //             </label>
-            //         </div>
-            //     </ExpansionPanelSummary>
-            //     <ExpansionPanelDetails>
-            //         {this.state.logo && <img src={this.state.logo} alt="Logo" />}
-            //     </ExpansionPanelDetails>
-            // </ExpansionPanel>
         )
     }
 }
