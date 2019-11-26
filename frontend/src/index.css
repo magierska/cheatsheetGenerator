@@ -51,17 +51,6 @@ p {
   }
 }
 
-@media (max-width: 1435px) {
-  .form-container {
-    width: calc(100% - 862px);
-    min-width: 350px;
-  }
-
-  .ace_editor {
-    width: 100% !important;
-  }
-}
-
 .header {
   flex: 0 1 auto;
 }
