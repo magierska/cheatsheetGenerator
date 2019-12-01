@@ -2,8 +2,9 @@ html, body, #root {
   height: 100%;
 }
 
-p {
+p, span {
   margin-bottom: 0;
+  white-space: pre-wrap;
 }
 
 .pdf-container {
@@ -60,7 +61,6 @@ p {
 }
 
 .header-title {
-  /* color: rgba(255, 102, 0); */
   font-size: large;
 }
 
@@ -83,25 +83,20 @@ p {
 }
 
 .card {
-  /* border: none; */
   margin-top: 5px;
   margin-bottom: 5px;
 }
 
 .card-header {
-  /* border: none; */
-  /* background-color: rgba(255, 102, 0, 0.6);
-  color: white; */
   font-weight: bold;
   font-size: medium;
-  /* font-family: 'Orbitron'; */
   padding-bottom: 10px;
   padding-top: 10px;
+  white-space: pre-wrap;
 }
 
 .card-body {
   padding: 10px 10px 10px 10px;
-  /* border: 1px solid; */
 }
 
 .method-name {
