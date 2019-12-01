@@ -113,11 +113,14 @@
 							"params": [
 								{
 									"name": "param",
-									"description": "Parameter description"
+									"description": "Parameter description",
+									"classes": "my-parameter"
 								}
 							],
 							"examples": [
-								"df %>>% plot(col = \"red\")"
+								{
+									"name": "df %>>% plot(col = \"red\")"
+								}
 							]
 						}
 					]
