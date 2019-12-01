@@ -31,12 +31,22 @@ File structure is presented below:
 	"pages": [{
     "cards": [{
       "title": "Card title",
+      "classes": "card_specific_class another_card_specific_class",
+      "headerClasses": "card_header_specific_class",
+      "bodyClasses": "card_body_specific_class",      
       "methods": [{
         "name": "method",
         "description": "Method description",
+        "classes": "method_specific_class",
+        "nameClasses": "method_name_specific_class",
+        "descriptionClasses": "method_description_specific_class",  
+        "parameterClasses": "method_parameter_in_brackets_specific_class",
         "params": [{
           "name": "param",
-          "description": "Parameter description"
+          "description": "Parameter description",
+          "classes": "parameter_specific_class",
+          "nameClasses": "parameter_name_specific_class",
+          "descriptionClasses": "paremetr_description_specific_class"
         }]
       },{
         "name": "method_without_brackets",
@@ -46,9 +56,10 @@ File structure is presented below:
           "name": "param",
           "description": "Parameter description"
         }],
-        "examples": [
-          "method_without_brackets(1)"
-        ]
+        "examples": [{
+          "name": "method_without_brackets(1)",
+          "classes": "example_specific_class"
+        }]
       }]
     }]
   }]
@@ -56,7 +67,9 @@ File structure is presented below:
 
 ```
 
-Elements of pages array are cards located on specific page. Cards are displayed in columns in order set in configuration file. For each card title and methods can be defined. Methods is an array containing names, descriptions and parameters. Method parameters are printed between "()" next to method name. In addition, if parameter description is defined, parameter description will appear under method description.
+Elements of pages array are cards located on specific page. Cards are displayed in columns in order set in configuration file. For each card title and methods can be defined. Methods is an array containing names, descriptions and parameters. If `withoutBrackets` parameter is not set to `true`, then method parameters are printed between `()` next to method name. In addition, if parameter description is defined, parameter description will appear under method description. Also examples for each method can be added. 
+
+For cards, methods, parameters and examples specific css classes can be defined by `*Classes` parameters, as presented in file structure. If more than one class needs to be specified, they can be splitted with space. Names for these classes need to be different, than already existing ones.
 
 ## Styles configuration
 

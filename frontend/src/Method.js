@@ -8,16 +8,16 @@ export default function Method({ method }) {
     }
 
     return (
-        <div className="method">
+        <div className={`method ${method.classes || ""}`}>
             <p>
-                <span className="method-name">{method.name}{method.withoutBrackets !== true && '('}</span>
-                <span className="method-parameter">{
+                <span className={`method-name ${method.nameClasses || ""}`}>{method.name}{method.withoutBrackets !== true && '('}</span>
+                <span className={`method-parameter ${method.parameterClasses || ""}`}>{
                     method.withoutBrackets !== true && method.params &&
                     method.params.map(p => p.name).join(', ')
                 }</span>
-                <span className="method-name">{method.withoutBrackets !== true && ')'}</span>
+                <span className={`method-name ${method.nameClasses || ""}`}>{method.withoutBrackets !== true && ')'}</span>
             </p>
-            <p className="method-description">{method.description}</p>
+            <p className={`method-description ${method.descriptionClasses || ""}`}>{method.description}</p>
             {method.params && method.params.map((p, i) =>
                 <Parameter
                     key={i}

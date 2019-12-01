@@ -5,9 +5,9 @@ export default function Parameter({ parameter }) {
         return null;
 
     return (
-        <div className="parameter">
-            <p className="parameter-name">{parameter.name}</p>
-            <p className="parameter-description">{parameter.description}</p>
+        <div className={`parameter ${parameter.classes || ""}`}>
+            <p className={`parameter-name ${parameter.nameClasses || ""}`}>{parameter.name}</p>
+            <p className={`parameter-description ${parameter.decsriptionClasses || ""}`}>{parameter.description}</p>
         </div>
     );
 }

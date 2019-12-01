@@ -8,9 +8,9 @@ export default function MethodsCard({ content }) {
     }
 
     return (
-        <Card>
-            <Card.Header>{content.title}</Card.Header>
-            <Card.Body>
+        <Card className={content.classes || ""}>
+            <Card.Header className={content.headerClasses || ""}>{content.title}</Card.Header>
+            <Card.Body className={content.bodyClasses || ""}>
                 {content.methods && content.methods.map((m, i) =>
                     <Method
                         key={i}
