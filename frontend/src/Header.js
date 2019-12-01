@@ -5,7 +5,7 @@ class Header extends Component {
         return (
             <div className="header">
                 <p className="header-title">
-                    <font className="header-title-name">{this.props.name}</font>
+                    <span className="header-title-name">{this.props.name}</span>
                     {" CHEAT SHEET"}</p>
                 <p className="header-description">{this.props.description}</p>
                 {this.props.logo && <img src={this.props.logo} alt="Logo" className="logo" />}
